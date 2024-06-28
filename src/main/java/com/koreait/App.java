@@ -1,5 +1,7 @@
 package com.koreait;
 
+import jdk.internal.icu.text.UnicodeSet;
+
 import java.util.Scanner;
 
 public class App {
@@ -34,6 +36,13 @@ public class App {
                 System.out.print("source :");
                 String source = sc.nextLine();
                 System.out.printf("%d번 motivation 이 등록 되었습니다.\n", lastId);
+                lastId++;
+            } else if(cmd.equals("list")) {
+                System.out.println("== motivation list ==");
+                System.out.printf("  id   //    motivation      //      source       \n");
+                System.out.println("=".repeat(40));
+
+
             }
         }
 
