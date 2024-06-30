@@ -1,6 +1,6 @@
 package org.koreait.motivation.entity;
 
-class Motivation {
+public class Motivation {
     private int id;
     private String body;
     private String source;
