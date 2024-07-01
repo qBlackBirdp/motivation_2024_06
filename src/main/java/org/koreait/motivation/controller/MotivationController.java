@@ -57,6 +57,7 @@ public class MotivationController {
     }
 
     public void delete(String cmd) {
+        System.out.println("delete 실행");
 
     }
 }

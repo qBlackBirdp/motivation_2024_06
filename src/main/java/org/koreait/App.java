@@ -23,7 +23,7 @@ public class App {
             System.out.print("commend) ");
             String cmd = Container.getScanner().nextLine().trim();
 
-            if (cmd.length() == 0) {
+            if (cmd.isEmpty()) {
                 System.out.println("명령어를 입력해주세요.");
                 continue;
             }
