@@ -14,10 +14,12 @@ public class Rq {
         String[] cmdBits = cmd.split("\\?", 2);
 
         actionMethod = cmdBits[0]; //delete
-
         params = new HashMap<>();
-
         String[] paramBits;
+
+        if (cmdBits.length == 1) {
+            return;
+        }
 
         try {
             paramBits = cmdBits[1].split("&");
@@ -33,7 +35,6 @@ public class Rq {
 
             params.put(key, value);
         }
-
     }
 
     public String getActionMethod() {
