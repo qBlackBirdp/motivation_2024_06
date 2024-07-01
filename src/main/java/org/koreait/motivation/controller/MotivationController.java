@@ -1,5 +1,6 @@
 package org.koreait.motivation.controller;
 
+import org.koreait.Rq;
 import org.koreait.motivation.entity.Motivation;
 import org.koreait.system.Container;
 
@@ -56,8 +57,34 @@ public class MotivationController {
         }
     }
 
-    public void delete(String cmd) {
+    public void delete(Rq rq) {
         System.out.println("delete 실행");
 
+        int id;
+        try {
+        id = Integer.parseInt(rq.getParams("id"));
+    }
+    catch (NumberFormatException e) {
+        System.out.println("정수 입력 오류");
+        return;
+        }
+
+        Motivation motivation = findById(id);
+
+        if (motivation == null) {
+            System.out.printf("%d번 motivation은 없어\n", id);
+            return;
+        }
+        motivations.remove(motivation);
+        System.out.printf("%d번 motivation을 삭제\n", id);
+    }
+
+    private Motivation findById(int id) {
+        for (Motivation motivation : motivations) {
+            if (motivation.getId() == id) {
+                return motivation;
+            }
+        }
+        return null;
     }
 }

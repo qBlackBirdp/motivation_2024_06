@@ -57,4 +57,8 @@ public class Rq {
     public String getParams(String paramName) {
         return params.get(paramName);
     }
+
+    public String getErrMsg() {
+        return errMsg;
+    }
 }

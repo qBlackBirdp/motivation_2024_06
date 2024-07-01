@@ -42,7 +42,7 @@ public class App {
                     motivationController.list();
                     break;
                 case "delete":
-//                        motivationController.delete();
+                        motivationController.delete(rq);
                     break;
                 default:
                     System.out.println("사용할 수 없는 명령어.");
