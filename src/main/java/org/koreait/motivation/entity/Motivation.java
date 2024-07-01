@@ -4,6 +4,7 @@ public class Motivation {
     private int id;
     private String body;
     private String source;
+    private String content;
 
     public Motivation(int id, String body, String source) {
         this.id = id;
@@ -43,4 +44,5 @@ public class Motivation {
                 ", source='" + source + '\'' +
                 '}';
     }
+
 }

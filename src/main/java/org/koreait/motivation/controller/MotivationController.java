@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class MotivationController {
     int lastId;
     List<Motivation> motivations;
@@ -61,12 +60,12 @@ public class MotivationController {
         System.out.println("delete 실행");
 
         int id;
+
         try {
-        id = Integer.parseInt(rq.getParams("id"));
-    }
-    catch (NumberFormatException e) {
-        System.out.println("정수 입력 오류");
-        return;
+            id = Integer.parseInt(rq.getParams("id"));
+        } catch (NumberFormatException e) {
+            System.out.println("정수 입력 오류");
+            return;
         }
 
         Motivation motivation = findById(id);
@@ -79,6 +78,40 @@ public class MotivationController {
         System.out.printf("%d번 motivation을 삭제\n", id);
     }
 
+    public void edit(Rq rq) {
+        System.out.println("edit 실행");
+
+        int id;
+
+        try {
+            id = Integer.parseInt(rq.getParams("id"));
+        } catch (NumberFormatException e) {
+            System.out.println("정수 입력 오류");
+            return;
+        }
+
+        Motivation motivation = findById(id);
+
+        if (motivation == null) {
+            System.out.printf("%d번 motivation은 없어\n", id);
+            return;
+        }
+
+        System.out.println("body(기존): "+motivation.getBody());
+        System.out.println("source(기존): "+motivation.getSource());
+
+        System.out.print("새로운 motivation 내용: ");
+        String newBody = Container.getScanner().nextLine();
+        System.out.print("새로운 source 내용: ");
+        String newSource = Container.getScanner().nextLine();
+
+        // 업데이트
+        motivation.setBody(newBody);
+        motivation.setSource(newSource);
+
+        System.out.printf("%d번 motivation을 수정\n", id);
+    }
+
     private Motivation findById(int id) {
         for (Motivation motivation : motivations) {
             if (motivation.getId() == id) {
@@ -88,3 +121,4 @@ public class MotivationController {
         return null;
     }
 }
+
