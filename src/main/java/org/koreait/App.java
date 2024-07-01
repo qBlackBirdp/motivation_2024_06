@@ -28,7 +28,7 @@ public class App {
                 continue;
             }
 
-            Rq rq = new Rq(cmd);
+            Rq rq = new Rq(cmd); //명령어에 대한 분석 (파싱)
 
             switch (rq.getActionMethod()) {
                 case "exit":
