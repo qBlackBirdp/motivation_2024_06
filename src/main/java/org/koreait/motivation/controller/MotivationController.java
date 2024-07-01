@@ -1,19 +1,18 @@
 package org.koreait.motivation.controller;
 
 import org.koreait.motivation.entity.Motivation;
+import org.koreait.system.Container;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+
 
 public class MotivationController {
-    int lastId = 0;
+    int lastId;
+    List<Motivation> motivations;
 
-    List<Motivation> motivations = new ArrayList<>();
-    Scanner sc;
-
-    public MotivationController(Scanner sc) {
-        this.sc = sc;
+    public MotivationController() {
         lastId = 0;
         motivations = new ArrayList<>();
     }
@@ -22,9 +21,9 @@ public class MotivationController {
         int id = lastId + 1;
 
         System.out.print("motivation :");
-        String body = sc.nextLine();
+        String body = Container.getScanner().nextLine();
         System.out.print("source :");
-        String source = sc.nextLine();
+        String source = Container.getScanner().nextLine();
 
         Motivation motivation = new Motivation(id, body, source);
 
@@ -40,7 +39,7 @@ public class MotivationController {
             return;
         }
         System.out.println("== motivation list ==");
-        System.out.printf("  id   //    source      //      body       \n");
+        System.out.print("  id   //    source      //      body       \n");
         System.out.println("=".repeat(40));
 
 //                System.out.println("있음.");
